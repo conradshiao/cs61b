@@ -1,0 +1,3 @@
+While trying to debug the failed autograder test for 02-endnotes.tx (the file with the "check that endnotes are subject to the page height..." with the lines of numbers), I found that all of my text and spacing exactly matches what was found in the autograder expected output. However, in my file there was an extra null line, at line 142, at the end of the file.
+
+I thought this was the error, and fixed the line to disappear in my code, but when simply running make check I found out that the junit tests expect an extra null line at the end of the converted file. So, my question is if this is truly why my code is failing the autograder, and if so why isn't the expected output having a new line, while the junit test and sample text file passes with an extra null line.

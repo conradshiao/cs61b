@@ -1,0 +1,14 @@
+# Test if size works correctly and clears the board.
+java -ea jump61.Main
+None
+===#1===
+manual blue
+start
+1 1
+2 2
+1 1
+1 2
+size 4
+dump
+quit
+===#2===

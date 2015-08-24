@@ -1,0 +1,8 @@
+For the tests in BoardTest.java and MutableBoardTests.java, when
+I run the junit tests through eclipse I always pass the tests. However, when I run make check through the terminal, I get errors (in the form of nullexceptionpointers) when I hit specifically (I seem to believe) the copy method in MutableBoard in line 38 (Arrays.copyOf method). I've made sure that I have copied the same files and have compiled them, but the discrepancy still occurs.
+
+Moreover, when I ran my project through the autograder, the autograder recognized that I failed those 2 same tests, so I'm not sure if the issue with my terminal or some other feature.
+
+I truly believe my code to be correct, in addition with eclipse junit testing me telling it is correct, and because when I interact with my code it seems to be playing a game just fine.
+
+If you can tell or give me suggestions on why the discrepancy with junit testing is occuring, I'd greatly appreciate it!

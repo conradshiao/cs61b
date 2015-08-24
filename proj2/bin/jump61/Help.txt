@@ -1,0 +1,40 @@
+Brief Summary of Help Commands:
+
+clear: Abandons current game and clears board to initial
+configuration. Play stops until the next start command.
+		   
+start: Start playing with the most recent game board. The
+first move now belongs to whoever's turn it is in the current
+state of the game board.
+	
+quit: Exits the program
+	
+auto P: Stops current game until the next start command, and
+causes player P to be played by an AI. P must be of value "red"
+or "blue", upper or lower case.
+	        
+manual P: Stops current game until the next start command, and
+causes player P to take commands from the terminal. P must be of
+value "red" or "blue", upper or lower case.
+	          
+size N: Stop current game, clear the board, and set the size
+of the board to N squares. N must be greater than 1, or else
+command syntax error.
+	
+move N: Stop current game, and set the number of the 
+next move to N.
+	
+set R C N P: Stop current game and put N spots at row R and
+column C. P must be of value 'b' or 'r' to indicate the
+color of the square, otherwise an erroneous command. When 
+N = 0, the square is cleared. The N spots must be less than
+or equal to the number of neighbors at R : C
+				 
+dump: Prints out the board in the game's current state.
+	
+seed N: If there are any AI players, and if they use
+pseudo-random numbers to choose moves, this command sets 
+the random seed to N (a long integer). Otherwise, this 
+command has no effect.
+	
+help: This command.

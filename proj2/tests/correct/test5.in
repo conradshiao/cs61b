@@ -1,0 +1,22 @@
+# Test to see if AI forces win.
+java -ea jump61.Main
+None
+===#1===
+size 3
+set 1 1 1 r
+set 1 2 2 r
+set 1 3 1 r
+set 2 1 1 r
+set 3 1 1 r
+set 3 2 1 r
+set 3 3 1 r
+set 2 3 1 r
+set 2 2 3 b
+dump
+auto red
+auto blue
+start
+%rb
+%er
+quit
+===#2===

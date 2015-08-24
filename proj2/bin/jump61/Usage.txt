@@ -1,0 +1,6 @@
+Usage: (1) java jump61.Main
+	   (2) java jump61.Main --display
+	   
+	   (1) runs the regular textual-based game.
+	   (2) runs the GUI version of the game, which is not
+	   supported at the moment.

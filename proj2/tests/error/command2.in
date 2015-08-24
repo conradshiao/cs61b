@@ -1,0 +1,15 @@
+# Test of bad parameters for set.
+java -ea jump61.Main
+None
+===#1===
+size 4
+clank
+manual blue
+start
+1 1
+zap
+set 1 1 2 P
+set 1 1 0 W
+dump
+quit
+===#2===

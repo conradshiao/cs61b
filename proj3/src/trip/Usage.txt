@@ -1,0 +1,10 @@
+Usage of trip Package:
+
+Arguments must be in the form [ -m MAP ] [ -o OUT ] [ REQUEST ], where:
+
+	MAP: The file that contains the map data.
+	
+	OUT: The file that contains the output of trip program.
+	
+	REQUEST: A file each of whose lines contains the names of two
+	or more points on the map and are the requests.

@@ -1,0 +1,17 @@
+Usage of Make Package:
+
+Arguments must be in the form
+[ -f MAKEFILE ] [ -D FILEINFO ] TARGET1 TARGET2 ...
+where:
+
+	MAKEFILE: The name of the makefile
+	
+	FILEINFO: Data for current existing objects and their ages.
+			  Will contain lines of the form NAME CHANGEDATE, 
+			  where CHANGEDATE is an integer indicating a time.
+			  The first line will only contain a date to
+			  indicate the current time.
+	
+	TARGET: Each is processed as a target in order.
+	        If there are no targets, uses the target(s) of the
+	        first rule in the MAKEFILE as the default.

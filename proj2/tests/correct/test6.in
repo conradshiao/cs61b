@@ -1,0 +1,20 @@
+# Test if commands ignore whitespace before and after commands.
+# Tests also to see if move are ignored when you're not playing
+# Test to reject bad command of size -10
+java -ea jump61.Main
+None
+===#1===
+size 4
+manual blue
+start
+1 1
+2 2
+1 1
+1 2
+clear 23423lsakdjfkldsjflk23j4lk32jl42k3j
+     set 4 4 2 b
+2 3
+size -10
+dump
+quit
+===#2===
