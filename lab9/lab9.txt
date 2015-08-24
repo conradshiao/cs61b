@@ -1,0 +1,54 @@
+Answers to questions from lab.
+
+2. [Explain times for java HashTesting test1].
+
+   Upon looking at the code for HashTesting, the reason why I get slower and longer times
+   to do the whole process of test1 is because of the code found in method test1 in
+   HashTesting. Upon inspection, as the second parameter (the integer) increases, the
+   HashTesting test1 takes a longer time to store those words and entries. Even though
+   the hash function looks at every other character and presumably goes a bit faster,
+   the test1 method in HashTesting.java has a dynamic ArrayList called items that has
+   String1 elements. When you have a higher integer passed as the 2nd argument, then
+   when you call items.add(new String1(inp.next(), k)), where k represents the integer
+   that you used, then you are expanding the dynamic ArrayList items by k elements, which
+   is NOT theta(1) running time. This explains why larger inputs for the integer lead to longer
+   running times, even given the time saved with skipping characters in the String1.hasCode
+   method. 
+
+
+3. [Explain times for java HashTesting test2 and test3].
+
+   We see that the only difference in test2 and test3 for HashTesting is that the former
+   calls set0, while the latter calls set1. In set0, there is an implicit character conversion
+   which runs in theta(1) constant running time. However, in set1 in the for loop there
+   is an alteration that causes theta(N) running time. This accounts for the relative difference
+   in timing behavior of these tests.
+
+4. [Why does HashSet fail to work in java HashTesting test4?]
+
+   HashSet fails to work in java HashTesting test 4 because the overriding
+   equals and overriding hashCode methods are wrong. Namely, the equals method
+   before modification only checks if the strings stored in the rep field are
+   equivalent; to implement the modification of the wrapper class FoldedString,
+   we need to ignore the case of the string for equals. We do this by standardizing
+   both the rep string and the object that we're passing in as the parameter to
+   their uppercase equivalent, and checking if they're equal within the body of the method.
+   In addition, because I arbitrarily chose to invoke the uppercase equivalent (rather
+   than standardizing by lowercase), I have to change the hashCode method in
+   FoldedString to take the hashCode of the uppercase version of the rep field,
+   which in turn is invoked when we compare the .equals method within the body of the
+   equals method in FoldedString.
+
+5. Explain how ListTesting program demonstrates that LinkedLists are doubly
+   linked.
+   
+   My ListTesting program sequentially prints out the numbers 1 through N.
+   However, for every integer that is divisible by 10 (except for N),
+   the number 1, the number present at the beginning of the LinkedList, is
+   printed again. By printing out the numbers 1 though N, I used the next method;
+   to print out the number 1 every 10 numbers, I had to utilize the doubly linked
+   properties of LinkedList. Namely, I had to iterate backwards through the list
+   until I reached the first element, print it, then iterate forward to where I was
+   before I went backward. This demonstrates that LinkedLists are doubly linked,
+   and that you can iterate both forward and backward in LinkedLists using
+   ListIterators on them.

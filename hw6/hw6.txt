@@ -1,0 +1,130 @@
+HW #6
+
+Table I.  Cost parameters for various insertion sorting programs.
+----- --  ---- ---------- --- ------- --------- ------- ---------
+
+This table shows the parameters a, b, and c in the formula
+
+          2
+       a N   +  b N  +  c
+
+for the running time (in seconds) of several different programs running on
+random, uniformly distributed data.
+
+Machine: hive
+
+Program            |    a    |     b    |      c
+-------------------+---------+----------+------------
+                   |         |          |
+Sorter             |2.789e-10|-2.014e-6 |0.0261216
+                   |         |          |
+-------------------+---------+----------+------------
+                   |         |          |
+csort (-O2)        |4.619e-10|-6.2023e-6|0.204342    
+                   |         |          |
+-------------------+---------+----------+------------
+                   |         |          |
+Sorter2            |1.6229e-9|-6.037e-5 |1.53311
+                   |         |          |
+-------------------+---------+----------+------------
+                   |         |          |
+csort (-O0)        |1.438e-9 |-4.1511e-6|0.142
+                   |         |          |
+
+
+Table II.  Cost parameters for a different machine
+----- ---  ---- ---------- --- - --------- -------
+
+As for Table I, but with a different architecture.
+
+Machine:ssh
+
+Program            |    a    |     b    |      c
+-------------------+---------+----------+------------
+                   |         |          |
+Sorter             |8.577e-9 |2.43e-4   |-13.64
+                   |         |          |
+-------------------+---------+----------+------------
+                   |         |          |
+csort (-O2)        |8.97e-9  |-2.87e-4  |8.35
+                   |         |          |
+-------------------+---------+----------+------------
+                   |         |          |
+Sorter2            |6.105e-7 |-.0694    |1759.2
+                   |         |          |
+-------------------+---------+----------+------------
+                   |         |          |
+csort (-O0)        |1.726e-8 |4.87e-5   |1.688
+                   |         |          |
+
+
+
+Table III.  Cost parameters for insertion sorting programs, non-uniform data
+----- ----  ---- ---------- --- --------- ------- --------- ----------- ----
+
+This table shows the parameters a, b, and c in the formula
+
+          2
+       a N   +  b N  +  c
+
+for the running time (in seconds) of several different programs,
+running on random data in which the kth item is computed by k + 20 *
+R, where R is uniformly distributed on 0..1.
+     
+
+
+
+Program            |    a    |     b    |      c
+-------------------+---------+----------+------------
+                   |         |          |
+Sorter             |1.96e-17 |2.206e-8  |0.012449
+                   |         |          |
+-------------------+---------+----------+------------
+                   |         |          |
+csort (-O2)        |1.505e-18|2.11456e-8|3.93519e-4
+                   |         |          |
+-------------------+---------+----------+------------
+                   |         |          |
+Sorter2            |3.395e-13|-3.936e-6 |12.8408
+                   |         |          |
+-------------------+---------+----------+------------
+                   |         |          |
+csort (-O0)        |2.667e-18|4.35467e-8|.0002
+                   |         |          |
+
+
+
+3. Explanation of differences between Table I and Table III:
+
+Table I calls randomVector(N,0,1,R) while Table III calls randomVector(N,1,20,R).
+The 2nd argument here is what makes the difference; the randomVector that
+we will sort for table I is completely random, containing doubles that
+range from 0 to 1 as its elements, completely RANDOM FROM ITS INDEX. However,
+the randomVector in Table III is set up that when sort is called on it,
+the elements are already naturally arranged in a way that somewhat mimics a
+least-to-greatest order, as the kth element of the randomVector is
+determined by C0*k + C1*R, with C0, C1, and R being the 2nd, 3rd, and 4th arguments of randomVector, respectively. So when the code for Sorter.sort actually reaches the
+rearranging segment in the nested for loop, the check for "j>=0 && values[j]>temp"
+in reality checks to see if the element in an index is greater than the element in
+its next indent; because the double array is set up naturally that most likely
+the element in an index is LESS THAN the element in its next index, it will skip over the for loop (and thus the reassigning portion of the code) more often, when measured relative to the Sorter.sort method used in the first Table I.
+
+This is the reason why Table III contains coefficients that tend toward
+vastly faster methods for Sorter.sort than the coefficients found in Table I.
+
+
+4. Expected effect of using a linked list rather than an array:
+
+The expected effect is that using a linked list will lead to a vastly slower running time;
+the amount of time to run Sorter2.sort(n) will be smaller than the amount of time
+to run Sorter3.sort(n). This is because linked lists implement their get method
+at a Θ(n). So let x be a particular linked list, and let y be an array. Then, when
+you call x.get in Sorter3.java, then because the get method has a running Θ(n) time
+then larger inputs will lead to longer elapsed times to use x.get; however, for y.get
+for ArrayList<double>, the get method is implemented in Θ(1), so no matter y.size(),
+the length of the array list, then the get method will be a constant time method.
+This accounts for the vastly larger running time for linked lists than arrays for a given input of double[] of size N.
+
+
+
+

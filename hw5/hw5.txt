@@ -1,0 +1,19 @@
+3. ceil(f(n)) ≤ f(n) + 1, for all values of n. Let the infimum of f(n) + 1 be inf(f(n) + 1) = C, a constant. By definition of C being the greatest lower bound, then (1/C)*f(n) > 1. This implies that (1/C + 1)*f(n) > f(n) + 1. This then proves that f(n) + 1 = O(f(n)), which thus implies that f(n) = O(f(n)).
+
+4. p(x) is any polynomial in x with positive coefficients, which implies that as you take the limit of x approaching infiniti, p(x) approaches infiniti. We can define p(x) := a_n*xⁿ + ... + a_0,
+
+p(x) ≤ a_n*xⁿ + a_(n-1)*xⁿ + ... + a_0*xⁿ ≤ (a_n + ... + a_0)*xⁿ, which implies that there exists a natural number C such that, for sufficiently large x, p(x) ≤ C*xⁿ
+
+Also, we note that for all X and Y, there exists a natural number Z such that X*log(x) + Y ≤ Z*log(x) for sufficiently large values of X.
+
+So, for sufficiently large values of x: log(p(x)) ≤ log(C*xⁿ) = log(C) + n*log(x) ≤ D log(x), implying that log p(x) is in O(log x).
+
+5. log_b(f(x)) = log_a(f(x)) / log_a(b), for any positive constant a.
+
+In order for log_b(f(x)) = Θ(log(f(x)), we must show that log_b(f(x)) ≥ C*|log(f(x))| and that log_b(f(x)) ≤ C*|log(f(x))|, or that namely log_b(f(x)) is found to be in O(log(f(x))) and to be found in Ω(log(f(x))).
+
+But from the log rule that we have already established, log_b(f(x)) = log_a(f(x)) / log_a(b), so then we can equivalently show that log_a(f(x))/log_a(b) ≤ C*log(f(x)) to be in O(log(f(x))); for C ≥ 1/(log_a(b)), then we have found a constant C to prove that log_b(f(x)) = O(log f(x))
+
+Using the same analysis, for C ≤ 1/log_a(b), then log_b(f(x)) ≥ C*|log(f(x))|, so then log_b(f(x)) = Ω(log f(x))
+
+6. The worst-case running time for the following program fragment is O(M*N).
